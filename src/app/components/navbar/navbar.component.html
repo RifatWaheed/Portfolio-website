@@ -1,0 +1,59 @@
+<nav class="navbar" [class.navbar--scrolled]="isScrolled" [class.navbar--menu-open]="isMobileMenuOpen">
+  <div class="navbar__container">
+    <!-- Logo -->
+    <div class="navbar__logo" (click)="scrollTo('hero')">
+      <span class="navbar__logo-bracket">&lt;</span>
+      <span class="navbar__logo-text">RW</span>
+      <span class="navbar__logo-bracket">/&gt;</span>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <ul class="navbar__links">
+      <li *ngFor="let link of navLinks; let i = index">
+        <a
+          class="navbar__link"
+          [class.navbar__link--active]="activeSection === link.target"
+          (click)="scrollTo(link.target)"
+          [style.animation-delay]="(i * 0.1) + 's'">
+          <span class="navbar__link-num">{{ '0' + (i + 1) }}.</span>
+          {{ link.label }}
+        </a>
+      </li>
+    </ul>
+
+    <!-- CTA Button -->
+    <a href="https://github.com/RifatWaheed" target="_blank" rel="noopener noreferrer" class="navbar__cta btn btn-outline">
+      <i class="fab fa-github"></i>
+      GitHub
+    </a>
+
+    <!-- Mobile Hamburger -->
+    <button class="navbar__hamburger" (click)="toggleMobileMenu()" [class.navbar__hamburger--open]="isMobileMenuOpen" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="navbar__mobile" [class.navbar__mobile--open]="isMobileMenuOpen">
+    <ul class="navbar__mobile-links">
+      <li *ngFor="let link of navLinks; let i = index">
+        <a
+          class="navbar__mobile-link"
+          (click)="scrollTo(link.target)"
+          [style.animation-delay]="isMobileMenuOpen ? (i * 0.08) + 's' : '0s'">
+          <span class="navbar__link-num">{{ '0' + (i + 1) }}.</span>
+          {{ link.label }}
+        </a>
+      </li>
+    </ul>
+    <a href="https://github.com/RifatWaheed" target="_blank" rel="noopener noreferrer" class="btn btn-outline navbar__mobile-cta">
+      <i class="fab fa-github"></i>
+      GitHub
+    </a>
+  </div>
+</nav>
+
+<!-- Overlay for mobile menu -->
+<div class="navbar__overlay" [class.navbar__overlay--visible]="isMobileMenuOpen" (click)="toggleMobileMenu()"></div>

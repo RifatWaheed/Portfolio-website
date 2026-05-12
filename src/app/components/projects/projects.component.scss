@@ -1,0 +1,278 @@
+.projects {
+  padding: var(--section-padding);
+  position: relative;
+
+  &__header {
+    margin-bottom: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  // ─── Projects Grid ───────────────────────────────────────────────────────────
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // ─── Bottom CTA ──────────────────────────────────────────────────────────────
+  &__bottom-cta {
+    margin-top: 3rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__cta-text {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+  }
+}
+
+// ─── Project Card ─────────────────────────────────────────────────────────────
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+
+  .projects--visible & {
+    animation: fadeInUp 0.7s ease forwards;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-accent-cyan), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  &--featured {
+    &::after {
+      content: 'FEATURED';
+      position: absolute;
+      top: 1rem;
+      right: -2rem;
+      background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-blue));
+      color: #080b0f;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 0.25rem 2.5rem;
+      transform: rotate(45deg);
+    }
+  }
+
+  // ─── Header ────────────────────────────────────────────────────────────────
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--color-accent-glow);
+    border: 1px solid var(--color-border-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+
+    i {
+      color: var(--color-accent-cyan);
+      font-size: 1.2rem;
+    }
+
+    .project-card:hover & {
+      background: rgba(0, 212, 255, 0.15);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+    }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+  }
+
+  &__status {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--color-text-muted);
+
+    i {
+      font-size: 0.45rem;
+      color: var(--color-text-muted);
+    }
+
+    &--active {
+      color: #22c55e;
+      i { color: #22c55e; animation: pulse-glow 1.5s ease infinite; }
+    }
+  }
+
+  &__github {
+    color: var(--color-text-muted);
+    font-size: 1.2rem;
+    transition: color var(--transition-fast);
+
+    &:hover { color: var(--color-text-primary); }
+  }
+
+  // ─── Body ──────────────────────────────────────────────────────────────────
+  &__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    transition: color var(--transition-fast);
+
+    .project-card:hover & {
+      color: var(--color-accent-cyan);
+    }
+  }
+
+  &__description {
+    font-size: 0.88rem;
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  // ─── Expandable ────────────────────────────────────────────────────────────
+  &__details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &--open {
+      max-height: 400px;
+    }
+  }
+
+  &__long-desc {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
+
+  &__highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-size: 0.82rem;
+      color: var(--color-text-secondary);
+
+      i {
+        color: var(--color-accent-cyan);
+        font-size: 0.7rem;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  // ─── Tags ──────────────────────────────────────────────────────────────────
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__tag {
+    padding: 0.25rem 0.625rem;
+    border-radius: 5px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--tag-color, var(--color-accent-cyan));
+    background: color-mix(in srgb, var(--tag-color, var(--color-accent-cyan)) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--tag-color, var(--color-accent-cyan)) 30%, transparent);
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background: color-mix(in srgb, var(--tag-color, var(--color-accent-cyan)) 20%, transparent);
+    }
+  }
+
+  // ─── Footer ────────────────────────────────────────────────────────────────
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  &__expand-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    background: none;
+    border: none;
+    color: var(--color-accent-cyan);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    cursor: pointer;
+    padding: 0;
+    transition: all var(--transition-fast);
+
+    &:hover {
+      gap: 0.625rem;
+    }
+
+    i {
+      font-size: 0.7rem;
+      transition: transform var(--transition-base);
+    }
+  }
+
+  &__cta {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+}

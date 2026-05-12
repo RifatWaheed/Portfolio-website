@@ -1,0 +1,154 @@
+<section id="contact" class="contact" [class.contact--visible]="isVisible">
+  <div class="container">
+    <div class="contact__header">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Contact <span>Me</span></h2>
+      <p class="section-subtitle">Have a project in mind, want to collaborate, or just want to say hi? I'd love to hear from you.</p>
+    </div>
+
+    <div class="contact__layout">
+      <!-- Left: Info & Social -->
+      <div class="contact__info">
+        <div class="contact__availability glass-card">
+          <div class="contact__avail-dot"></div>
+          <div>
+            <p class="contact__avail-title">Available for Opportunities</p>
+            <p class="contact__avail-sub">Currently at Computer Ease Limited · Open to new challenges</p>
+          </div>
+        </div>
+
+        <p class="contact__info-text">
+          I'm always open to interesting projects, freelance work, or full-time opportunities.
+          Whether it's a quick question or a long-term collaboration — let's build something great together.
+        </p>
+
+        <!-- Social Links -->
+        <div class="contact__socials">
+          <a
+            class="contact__social glass-card"
+            *ngFor="let link of socialLinks; let i = index"
+            [href]="link.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            [style.--social-color]="link.color"
+            [style.animation-delay]="isVisible ? (i * 0.1 + 0.3) + 's' : '0s'">
+            <div class="contact__social-icon">
+              <i [class]="link.icon"></i>
+            </div>
+            <div class="contact__social-content">
+              <span class="contact__social-label">{{ link.label }}</span>
+              <span class="contact__social-value">{{ link.value }}</span>
+            </div>
+            <i class="fas fa-arrow-up-right-from-square contact__social-arrow"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Contact Form -->
+      <div class="contact__form-wrap glass-card">
+        <!-- Success State -->
+        <div class="contact__success" *ngIf="isSubmitted">
+          <div class="contact__success-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <h3 class="contact__success-title">Message Sent!</h3>
+          <p class="contact__success-text">Thanks for reaching out. I'll get back to you within 24 hours.</p>
+          <button class="btn btn-outline" (click)="resetForm()">Send Another</button>
+        </div>
+
+        <!-- Form -->
+        <form class="contact__form" [formGroup]="contactForm" (ngSubmit)="onSubmit()" *ngIf="!isSubmitted" novalidate>
+          <h3 class="contact__form-title">Send a Message</h3>
+
+          <div class="contact__form-row">
+            <!-- Name -->
+            <div class="contact__field" [class.contact__field--error]="f['name'].invalid && f['name'].touched">
+              <label class="contact__label" for="name">
+                <i class="fas fa-user"></i>
+                Your Name
+              </label>
+              <input
+                id="name"
+                class="contact__input"
+                type="text"
+                placeholder="e.g. John Doe"
+                formControlName="name"
+                autocomplete="name">
+              <span class="contact__error" *ngIf="f['name'].invalid && f['name'].touched">
+                Please enter your name (min. 2 chars)
+              </span>
+            </div>
+
+            <!-- Email -->
+            <div class="contact__field" [class.contact__field--error]="f['email'].invalid && f['email'].touched">
+              <label class="contact__label" for="email">
+                <i class="fas fa-envelope"></i>
+                Email Address
+              </label>
+              <input
+                id="email"
+                class="contact__input"
+                type="email"
+                placeholder="e.g. john@example.com"
+                formControlName="email"
+                autocomplete="email">
+              <span class="contact__error" *ngIf="f['email'].invalid && f['email'].touched">
+                Please enter a valid email address
+              </span>
+            </div>
+          </div>
+
+          <!-- Subject -->
+          <div class="contact__field" [class.contact__field--error]="f['subject'].invalid && f['subject'].touched">
+            <label class="contact__label" for="subject">
+              <i class="fas fa-tag"></i>
+              Subject
+            </label>
+            <input
+              id="subject"
+              class="contact__input"
+              type="text"
+              placeholder="e.g. Project Collaboration"
+              formControlName="subject">
+            <span class="contact__error" *ngIf="f['subject'].invalid && f['subject'].touched">
+              Subject is required (min. 4 chars)
+            </span>
+          </div>
+
+          <!-- Message -->
+          <div class="contact__field" [class.contact__field--error]="f['message'].invalid && f['message'].touched">
+            <label class="contact__label" for="message">
+              <i class="fas fa-comment-dots"></i>
+              Message
+            </label>
+            <textarea
+              id="message"
+              class="contact__input contact__textarea"
+              placeholder="Tell me about your project or idea..."
+              formControlName="message"
+              rows="5">
+            </textarea>
+            <span class="contact__error" *ngIf="f['message'].invalid && f['message'].touched">
+              Message must be at least 20 characters
+            </span>
+          </div>
+
+          <!-- Submit -->
+          <button
+            class="btn btn-primary contact__submit"
+            type="submit"
+            [disabled]="isSubmitting">
+            <span *ngIf="!isSubmitting">
+              <i class="fas fa-paper-plane"></i>
+              Send Message
+            </span>
+            <span *ngIf="isSubmitting" class="contact__loading">
+              <i class="fas fa-spinner fa-spin"></i>
+              Sending...
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

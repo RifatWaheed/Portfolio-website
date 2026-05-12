@@ -1,0 +1,84 @@
+<section id="about" class="about" [class.about--visible]="isVisible">
+  <div class="container">
+    <div class="about__grid">
+      <!-- Left: Text Content -->
+      <div class="about__content">
+        <p class="section-label">Who I Am</p>
+        <h2 class="section-title">About <span>Me</span></h2>
+
+        <div class="about__text-blocks">
+          <p class="about__paragraph">
+            I'm a <strong>Full Stack Developer</strong> at <span class="about__highlight">Computer Ease Limited</span>,
+            passionate about crafting end-to-end web solutions — from sleek Angular frontends to robust Go backends
+            powered by PostgreSQL.
+          </p>
+          <p class="about__paragraph">
+            My toolkit spans <strong>frontend engineering</strong>, <strong>RESTful API design</strong>,
+            <strong>JWT authentication</strong>, and <strong>database architecture</strong>. I thrive on
+            building systems that are not just functional but thoughtfully engineered for scale, maintainability,
+            and performance.
+          </p>
+          <p class="about__paragraph">
+            I'm deeply interested in <span class="about__highlight">problem solving</span>,
+            <span class="about__highlight">system design</span>, and <span class="about__highlight">clean architecture</span>
+            — the kind that makes future-you and your teammates grateful. I hold a BSc from
+            <strong>Ahsanullah University of Science & Technology (AUST)</strong>.
+          </p>
+          <p class="about__paragraph">
+            Outside of code, I'm a <span class="about__highlight">Valorant player</span> with my own gaming
+            channel, a <span class="about__highlight">Football Champion</span> (2x Intra-AUST), and a
+            content creator who loves sharing gaming moments with an online community.
+          </p>
+        </div>
+
+        <!-- Interests -->
+        <div class="about__interests">
+          <p class="about__interests-label">Interests & Hobbies</p>
+          <div class="about__interests-grid">
+            <div class="about__interest" *ngFor="let interest of interests; let i = index"
+                 [style.animation-delay]="isVisible ? (i * 0.08 + 0.3) + 's' : '0s'">
+              <i [class]="interest.icon"></i>
+              <span>{{ interest.label }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Current Role -->
+        <div class="about__role-card glass-card">
+          <div class="about__role-dot"></div>
+          <div class="about__role-info">
+            <p class="about__role-title">Full Stack Developer</p>
+            <p class="about__role-company">Computer Ease Limited · Present</p>
+          </div>
+          <div class="about__role-status">
+            <span class="about__role-badge">Available for Opportunities</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Stats -->
+      <div class="about__stats">
+        <div class="about__stat-card glass-card" *ngFor="let stat of stats; let i = index"
+             [style.animation-delay]="isVisible ? (i * 0.15 + 0.2) + 's' : '0s'">
+          <div class="about__stat-icon">
+            <i [class]="stat.icon"></i>
+          </div>
+          <div class="about__stat-value">{{ stat.value }}</div>
+          <div class="about__stat-label">{{ stat.label }}</div>
+        </div>
+
+        <!-- Education Card -->
+        <div class="about__edu-card glass-card">
+          <div class="about__edu-icon">
+            <i class="fas fa-university"></i>
+          </div>
+          <div class="about__edu-content">
+            <p class="about__edu-degree">BSc in Computer Science</p>
+            <p class="about__edu-school">Ahsanullah University of<br>Science & Technology</p>
+            <p class="about__edu-year">Graduate</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

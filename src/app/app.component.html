@@ -1,0 +1,39 @@
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Loading Screen -->
+<div class="loader-overlay" [class.loader-hidden]="!isLoading">
+  <div class="loader-content">
+    <div class="loader-logo">
+      <span class="loader-bracket">&lt;</span>
+      <span class="loader-name">RW</span>
+      <span class="loader-bracket">/&gt;</span>
+    </div>
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+    <p class="loader-text">Initializing portfolio...</p>
+  </div>
+</div>
+
+<!-- Scroll Progress Bar -->
+@if (!isLoading) {
+  <div class="scroll-progress" [style.width.%]="scrollProgress"></div>
+}
+
+<!-- Main App -->
+<div class="app-wrapper" [class.app-visible]="!isLoading">
+  <app-navbar></app-navbar>
+
+  <main>
+    <app-hero></app-hero>
+    <app-about></app-about>
+    <app-tech-stack></app-tech-stack>
+    <app-projects></app-projects>
+    <app-gaming></app-gaming>
+    <app-contact></app-contact>
+  </main>
+
+  <app-footer></app-footer>
+</div>

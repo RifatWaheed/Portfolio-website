@@ -1,0 +1,104 @@
+<section id="gaming" class="gaming" [class.gaming--visible]="isVisible">
+  <!-- Background -->
+  <div class="gaming__bg">
+    <div class="gaming__bg-gradient"></div>
+    <div class="gaming__bg-grid"></div>
+  </div>
+
+  <div class="container gaming__container">
+    <!-- Header -->
+    <div class="gaming__header">
+      <p class="section-label">Beyond the Code</p>
+      <h2 class="section-title">Gaming & <span>Life</span></h2>
+      <p class="section-subtitle">When I'm not engineering software, I'm competing on the virtual battleground and the football field.</p>
+    </div>
+
+    <div class="gaming__layout">
+      <!-- Main Feature Card -->
+      <div class="gaming__feature glass-card">
+        <!-- Valorant Banner -->
+        <div class="gaming__valorant-banner">
+          <div class="gaming__valorant-bg"></div>
+          <div class="gaming__valorant-content">
+            <div class="gaming__valorant-logo">
+              <i class="fas fa-crosshairs"></i>
+              <span>VALORANT</span>
+            </div>
+            <p class="gaming__valorant-tagline">Competitive · Strategic · Clutch</p>
+          </div>
+          <div class="gaming__valorant-overlay"></div>
+        </div>
+
+        <!-- Channel Info -->
+        <div class="gaming__channel-info">
+          <div class="gaming__channel-avatar">
+            <i class="fab fa-youtube"></i>
+          </div>
+          <div class="gaming__channel-meta">
+            <h3 class="gaming__channel-name">Rifat Waheed</h3>
+            <p class="gaming__channel-desc">Gaming content, Valorant highlights & competitive gameplay</p>
+            <a href="https://www.youtube.com/@rifatwaheed2105" target="_blank" rel="noopener noreferrer"
+               class="gaming__channel-link">
+              <i class="fab fa-youtube"></i>
+              <span>youtube.com/@rifatwaheed2105</span>
+              <i class="fas fa-arrow-up-right-from-square gaming__link-icon"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Subscribe CTA -->
+        <div class="gaming__cta-group">
+          <a href="https://www.youtube.com/@rifatwaheed2105" target="_blank" rel="noopener noreferrer"
+             class="gaming__subscribe-btn">
+            <i class="fab fa-youtube"></i>
+            Visit Channel
+          </a>
+          <a href="https://github.com/RifatWaheed" target="_blank" rel="noopener noreferrer"
+             class="btn btn-outline gaming__github-btn">
+            <i class="fab fa-github"></i>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- Achievements Grid -->
+      <div class="gaming__achievements">
+        <div
+          class="gaming__achievement glass-card"
+          *ngFor="let a of achievements; let i = index"
+          [style.--ach-color]="a.color"
+          [style.animation-delay]="isVisible ? (i * 0.12 + 0.3) + 's' : '0s'">
+          <div class="gaming__achievement-icon">
+            <i [class]="a.icon"></i>
+          </div>
+          <div class="gaming__achievement-content">
+            <h4 class="gaming__achievement-title">{{ a.title }}</h4>
+            <p class="gaming__achievement-desc">{{ a.description }}</p>
+          </div>
+        </div>
+
+        <!-- Football Trophy Card -->
+        <div class="gaming__trophy-card glass-card">
+          <div class="gaming__trophy-header">
+            <i class="fas fa-futbol gaming__trophy-icon"></i>
+            <h3 class="gaming__trophy-title">Football Champion</h3>
+          </div>
+          <p class="gaming__trophy-desc">
+            Won the <strong>Intra-AUST Football Competition</strong> not once but twice —
+            proving that the same competitive spirit that drives great code also wins on the pitch.
+          </p>
+          <div class="gaming__trophy-badges">
+            <span class="gaming__trophy-badge">
+              <i class="fas fa-medal"></i>
+              2022 Champion
+            </span>
+            <span class="gaming__trophy-badge">
+              <i class="fas fa-medal"></i>
+              2023 Champion
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,111 @@
+<section id="hero" class="hero">
+  <!-- Particle Canvas -->
+  <canvas #particleCanvas class="hero__canvas"></canvas>
+
+  <!-- Gradient Orbs -->
+  <div class="hero__orb hero__orb--1"></div>
+  <div class="hero__orb hero__orb--2"></div>
+  <div class="hero__orb hero__orb--3"></div>
+
+  <!-- Grid Lines -->
+  <div class="hero__grid"></div>
+
+  <div class="container hero__container">
+    <div class="hero__content">
+      <!-- Greeting -->
+      <div class="hero__greeting">
+        <span class="hero__greeting-line"></span>
+        <span class="hero__greeting-text">Hello, World! I'm</span>
+      </div>
+
+      <!-- Name -->
+      <h1 class="hero__name">
+        <span class="hero__name-first">Rifat</span>
+        <br>
+        <span class="hero__name-last">Waheed</span>
+      </h1>
+
+      <!-- Title with typing effect -->
+      <div class="hero__title-wrapper">
+        <span class="hero__title-prefix">&gt;&nbsp;</span>
+        <span class="hero__title">{{ displayedText }}</span>
+        <span class="hero__cursor">|</span>
+      </div>
+
+      <!-- Subtitle -->
+      <p class="hero__subtitle">
+        Building scalable web applications with
+        <span class="hero__tech-tag">Angular</span>,
+        <span class="hero__tech-tag">Go</span>,
+        <span class="hero__tech-tag">PostgreSQL</span>,
+        <span class="hero__tech-tag">AWS</span>,
+        and <span class="hero__tech-tag">JWT</span> authentication systems.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="hero__actions">
+        <button class="btn btn-primary" (click)="scrollTo('projects')">
+          <i class="fas fa-rocket"></i>
+          View Projects
+        </button>
+        <button class="btn btn-outline" (click)="scrollTo('contact')">
+          <i class="fas fa-paper-plane"></i>
+          Contact Me
+        </button>
+      </div>
+
+      <!-- Social Links -->
+      <div class="hero__socials">
+        <a href="https://github.com/RifatWaheed" target="_blank" rel="noopener noreferrer" class="hero__social" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/rifat-waheed-990830248" target="_blank" rel="noopener noreferrer" class="hero__social" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://www.youtube.com/@rifatwaheed2105" target="_blank" rel="noopener noreferrer" class="hero__social" title="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="mailto:rifatwaheed&#64;email.com" class="hero__social" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Visual -->
+    <div class="hero__visual">
+      <div class="hero__avatar-frame">
+        <div class="hero__avatar-ring hero__avatar-ring--outer"></div>
+        <div class="hero__avatar-ring hero__avatar-ring--middle"></div>
+        <div class="hero__avatar-inner">
+          <div class="hero__avatar-initials">RW</div>
+          <div class="hero__avatar-glow"></div>
+        </div>
+        <!-- Orbiting dots -->
+        <div class="hero__orbit hero__orbit--1">
+          <div class="hero__orbit-dot"></div>
+        </div>
+        <div class="hero__orbit hero__orbit--2">
+          <div class="hero__orbit-dot"></div>
+        </div>
+        <!-- Tech badges -->
+        <div class="hero__badge hero__badge--angular">
+          <span>Angular</span>
+        </div>
+        <div class="hero__badge hero__badge--go">
+          <span>Go</span>
+        </div>
+        <div class="hero__badge hero__badge--pg">
+          <span>PostgreSQL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="hero__scroll-indicator" (click)="scrollTo('about')">
+    <span class="hero__scroll-text">Scroll</span>
+    <div class="hero__scroll-line">
+      <div class="hero__scroll-dot"></div>
+    </div>
+  </div>
+</section>

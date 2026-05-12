@@ -1,0 +1,53 @@
+<section id="tech-stack" class="tech-stack" [class.tech-stack--visible]="isVisible">
+  <div class="container">
+    <div class="tech-stack__header">
+      <p class="section-label">What I Work With</p>
+      <h2 class="section-title">Tech <span>Stack</span></h2>
+      <p class="section-subtitle">Technologies I use to build scalable, secure, and modern web applications.</p>
+    </div>
+
+    <!-- Tech Grid -->
+    <div class="tech-stack__grid">
+      <div
+        class="tech-stack__item glass-card"
+        *ngFor="let tech of allTech; let i = index"
+        [style.animation-delay]="isVisible ? (i * 0.06 + 0.2) + 's' : '0s'"
+        [style.--tech-color]="tech.color">
+        <div class="tech-stack__item-abbr">{{ tech.abbr }}</div>
+        <div class="tech-stack__item-name">{{ tech.name }}</div>
+        <div class="tech-stack__item-glow"></div>
+      </div>
+    </div>
+
+    <!-- Category Breakdown -->
+    <div class="tech-stack__categories">
+      <div class="tech-stack__category glass-card" *ngFor="let cat of categories; let i = index"
+           [style.animation-delay]="isVisible ? (i * 0.2 + 0.4) + 's' : '0s'">
+        <div class="tech-stack__cat-header">
+          <div class="tech-stack__cat-icon">
+            <i [class]="cat.icon"></i>
+          </div>
+          <h3 class="tech-stack__cat-name">{{ cat.name }}</h3>
+        </div>
+        <div class="tech-stack__cat-items">
+          <div class="tech-stack__bar-item" *ngFor="let item of cat.items; let j = index">
+            <div class="tech-stack__bar-info">
+              <span class="tech-stack__bar-label">{{ item.name }}</span>
+              <span class="tech-stack__bar-pct">{{ item.level }}%</span>
+            </div>
+            <div class="tech-stack__bar-track">
+              <div
+                class="tech-stack__bar-fill"
+                [style.width]="isVisible ? item.level + '%' : '0%'"
+                [style.transition-delay]="isVisible ? (j * 0.1 + i * 0.2 + 0.6) + 's' : '0s'">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background decoration -->
+  <div class="tech-stack__bg-glow"></div>
+</section>

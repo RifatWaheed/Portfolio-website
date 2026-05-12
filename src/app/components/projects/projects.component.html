@@ -1,0 +1,85 @@
+<section id="projects" class="projects" [class.projects--visible]="isVisible">
+  <div class="container">
+    <div class="projects__header">
+      <p class="section-label">What I've Built</p>
+      <h2 class="section-title">Featured <span>Projects</span></h2>
+      <p class="section-subtitle">A selection of projects I've engineered — from concept to deployment.</p>
+    </div>
+
+    <div class="projects__grid">
+      <article
+        class="project-card glass-card"
+        *ngFor="let project of projects; let i = index"
+        [class.project-card--featured]="project.featured"
+        [class.project-card--expanded]="expandedProject === i"
+        [style.animation-delay]="isVisible ? (i * 0.15 + 0.2) + 's' : '0s'">
+
+        <!-- Card Header -->
+        <div class="project-card__header">
+          <div class="project-card__icon-wrap">
+            <i [class]="project.icon"></i>
+          </div>
+          <div class="project-card__meta">
+            <span class="project-card__status"
+                  [class.project-card__status--active]="project.status === 'In Progress'">
+              <i class="fas fa-circle"></i>
+              {{ project.status }}
+            </span>
+            <a [href]="project.githubUrl" target="_blank" rel="noopener noreferrer"
+               class="project-card__github" title="View on GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card Content -->
+        <div class="project-card__body">
+          <h3 class="project-card__title">{{ project.title }}</h3>
+          <p class="project-card__description">{{ project.description }}</p>
+
+          <!-- Expandable Details -->
+          <div class="project-card__details" [class.project-card__details--open]="expandedProject === i">
+            <p class="project-card__long-desc">{{ project.longDescription }}</p>
+            <ul class="project-card__highlights">
+              <li *ngFor="let h of project.highlights">
+                <i class="fas fa-check-circle"></i>
+                {{ h }}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="project-card__tags">
+          <span
+            class="project-card__tag"
+            *ngFor="let tag of project.tags"
+            [style.--tag-color]="tag.color">
+            {{ tag.name }}
+          </span>
+        </div>
+
+        <!-- Card Footer -->
+        <div class="project-card__footer">
+          <button class="project-card__expand-btn" (click)="toggleExpand(i)">
+            <span>{{ expandedProject === i ? 'Show Less' : 'Learn More' }}</span>
+            <i class="fas" [class.fa-chevron-down]="expandedProject !== i" [class.fa-chevron-up]="expandedProject === i"></i>
+          </button>
+          <a [href]="project.githubUrl" target="_blank" rel="noopener noreferrer" class="btn btn-outline project-card__cta">
+            <i class="fab fa-github"></i>
+            View Code
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="projects__bottom-cta">
+      <p class="projects__cta-text">Want to see more of my work?</p>
+      <a href="https://github.com/RifatWaheed" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        <i class="fab fa-github"></i>
+        View All on GitHub
+      </a>
+    </div>
+  </div>
+</section>
