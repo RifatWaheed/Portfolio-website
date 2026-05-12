@@ -1,0 +1,5 @@
+name = "portfolio-webpage"
+compatibility_date = "2026-05-12"
+
+[assets]
+directory = "./dist/portfolio-webpage/browser"
