@@ -1,5 +1,3 @@
-name = "portfolio-webpage"
+name = "rifat-portfolio"
 compatibility_date = "2026-05-12"
-
-[assets]
-directory = "./dist/portfolio-webpage/browser"
+pages_build_output_dir = "./dist/rifat-portfolio/browser"
